@@ -11,9 +11,10 @@ function createWindow() {
             contextIsolation: false,
         },
     });
+
     let startUrl = process.env.url
         ? process.env.url
-        : path.resolve(__dirname, "../build/index.html");
+        : path.resolve(__dirname, "../../build/index.html");
 
     mainWindow.loadURL(startUrl);
     console.log(startUrl);
@@ -38,7 +39,7 @@ app.on("activate", function () {
 });
 
 const sendStatusToWindow = (text) => {
-    log.info(text);
+    console.log(text);
     if (mainWindow) {
         mainWindow.webContents.send("message", text);
     }
@@ -47,6 +48,17 @@ const sendStatusToWindow = (text) => {
 autoUpdater.on("checking-for-update", () => {
     sendStatusToWindow("Checking for update...");
 });
+ipcMain.on("checkForUpdate", (evt, arg) => {
+    // autoUpdater.updateConfigPath = path.join(
+    //     __dirname,
+    //     "../../dev-app-update.yml"
+    // );
+    autoUpdater.checkForUpdates();
+});
+// setInterval(() => {
+
+// }, 5000);
+
 autoUpdater.on("update-available", (info) => {
     sendStatusToWindow("Update available.");
 });

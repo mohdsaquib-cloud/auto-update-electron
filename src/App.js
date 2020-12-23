@@ -9,7 +9,7 @@ const { ipcRenderer: ipc } = window.require("electron");
 class App extends Component {
     componentDidMount() {
         ipc.on("message", (evt, text) => {
-            console.log(text);
+            alert(text);
         });
     }
     render() {
@@ -32,6 +32,9 @@ class App extends Component {
                         <Link to="/update">Update Available</Link>
                     </button>
                 </Router>
+                <button onClick={() => ipc.send("checkForUpdate")}>
+                    Check for Update
+                </button>
             </div>
         );
     }

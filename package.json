@@ -1,7 +1,7 @@
 {
     "name": "auto-update-electron",
     "version": "1.0.0",
-    "description": "",
+    "description": "auto Updater",
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.6",
         "@testing-library/react": "^11.2.2",
@@ -18,7 +18,7 @@
         "url": "git+https://github.com/mohdsaquib-cloud/auto-update-electron.git"
     },
     "keywords": [],
-    "author": "",
+    "author": "Saquib",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/mohdsaquib-cloud/auto-update-electron/issues"
@@ -32,11 +32,20 @@
             "build/**/*",
             "node_modules/**/*"
         ],
-        "target": "NSIS",
+        "publish": [
+            {
+                "provider": "generic",
+                "url": "https://github.com/mohdsaquib-cloud/auto-update-electron"
+            }
+        ],
+        "win": {
+            "target": [
+                "NSIS",
+                "zip"
+            ]
+        },
         "nsis": {
             "allowToChangeInstallationDirectory": true,
-            "installerIcon": "public/logo.ico",
-            "installerHeaderIcon": "public/logo.ico",
             "deleteAppDataOnUninstall": true,
             "oneClick": "false"
         }
@@ -47,8 +56,9 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "app": "set url=http://localhost:3000 && electron .",
-        "electron-pack": "electron-builder -c.extraMetadata.main=build/electron/main.js -w --publish always",
-        "preelectron-pack": "npm run build"
+        "electron-pack": "electron-builder -c.snap.publish=github -c.extraMetadata.main=build/electron/main.js -w --publish always",
+        "preelectron-pack": "npm run build",
+        "postinstall": "electron-builder install-app-deps"
     },
     "eslintConfig": {
         "extends": [
