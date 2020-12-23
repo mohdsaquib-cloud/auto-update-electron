@@ -46,8 +46,9 @@
         },
         "nsis": {
             "allowToChangeInstallationDirectory": true,
-            "deleteAppDataOnUninstall": true,
-            "oneClick": "false"
+            "installerIcon": "public/logo.ico",
+            "installerHeaderIcon": "public/logo.ico",
+            "deleteAppDataOnUninstall": true
         }
     },
     "scripts": {
@@ -56,7 +57,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "app": "set url=http://localhost:3000 && electron .",
-        "electron-pack": "electron-builder -c.snap.publish=github -c.extraMetadata.main=build/electron/main.js -w --publish always",
+        "publish": "electron-builder -c.snap.publish=github -c.extraMetadata.main=build/electron/main.js -w --publish always",
         "preelectron-pack": "npm run build",
         "postinstall": "electron-builder install-app-deps"
     },
