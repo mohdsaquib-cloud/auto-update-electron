@@ -1,6 +1,6 @@
 {
     "name": "@mohdsaquib-cloud/auto-update-electron",
-    "version": "1.2.0",
+    "version": "1.2.9",
     "description": "auto Updater",
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.6",
@@ -51,6 +51,9 @@
             "deleteAppDataOnUninstall": true,
             "oneClick": false
         }
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
     },
     "scripts": {
         "start": "SET BROWSER=none  && react-scripts start",
