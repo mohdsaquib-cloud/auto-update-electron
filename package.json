@@ -1,6 +1,6 @@
 {
     "name": "auto-update-electron",
-    "version": "1.2.3",
+    "version": "1.4.9",
     "description": "auto Updater",
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.6",
