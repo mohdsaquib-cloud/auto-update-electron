@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 import Dashboard from "./dashboard";
 import Register from "./register";
 import { Component } from "react";
+import logo from "./logo.svg";
 const { ipcRenderer: ipc } = window.require("electron");
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <img style={{ height: "100px" }} src={logo} alt="logo" />
                 <Router>
                     <Route path="/" exact component={Dashboard} />
                     <Route path="/login" component={Login} />

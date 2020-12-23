@@ -59,6 +59,12 @@ ipcMain.on("checkForUpdate", (evt, arg) => {
 
 // }, 5000);
 
+// download(mainWindow, urlToNupkg, {
+//     directory: global.tempPath,
+//     onProgress: (progress) =>
+//         mainWindow.webContents.send("downloadProgress", progress),
+// });
+
 autoUpdater.on("update-available", (info) => {
     sendStatusToWindow("Update available.");
 });

@@ -41,9 +41,6 @@
                 "nsis"
             ]
         },
-        "publishConfig": {
-            "registry": "https://npm.pkg.github.com"
-        },
         "nsis": {
             "allowToChangeInstallationDirectory": true,
             "installerIcon": "build/logo.ico",
