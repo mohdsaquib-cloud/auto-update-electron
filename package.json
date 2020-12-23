@@ -1,6 +1,6 @@
 {
-    "name": "auto-update-electron",
-    "version": "1.6.7",
+    "name": "@mohdsaquib-cloud/auto-update-electron",
+    "version": "1.2.0",
     "description": "auto Updater",
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.6",
@@ -32,21 +32,22 @@
             "build/**/*",
             "node_modules/**/*"
         ],
-        "publish": [
-            {
-                "provider": "generic",
-                "url": "https://github.com/mohdsaquib-cloud/auto-update-electron"
-            }
-        ],
+        "publish": {
+            "provider": "github",
+            "url": "https://github.com/mohdsaquib-cloud/auto-update-electron"
+        },
         "win": {
             "target": [
                 "nsis"
             ]
         },
+        "publishConfig": {
+            "registry": "https://npm.pkg.github.com"
+        },
         "nsis": {
             "allowToChangeInstallationDirectory": true,
-            "installerIcon": "public/logo.ico",
-            "installerHeaderIcon": "public/logo.ico",
+            "installerIcon": "build/logo.ico",
+            "installerHeaderIcon": "build/logo.ico",
             "deleteAppDataOnUninstall": true,
             "oneClick": false
         }
@@ -57,7 +58,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "app": "set url=http://localhost:3000 && electron .",
-        "publish": "electron-builder -c.extraMetadata.main=build/electron/main.js --win -p always",
+        "electron-pack": "electron-builder -c.extraMetadata.main=build/electron/main.js --win -p always",
         "preelectron-pack": "npm run build",
         "postinstall": "electron-builder install-app-deps"
     },
