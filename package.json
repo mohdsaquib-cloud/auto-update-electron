@@ -1,0 +1,74 @@
+{
+    "name": "auto-update-electron",
+    "version": "1.0.0",
+    "description": "",
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.11.6",
+        "@testing-library/react": "^11.2.2",
+        "@testing-library/user-event": "^12.6.0",
+        "electron-updater": "^4.3.5",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "4.0.1",
+        "web-vitals": "^0.2.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mohdsaquib-cloud/auto-update-electron.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mohdsaquib-cloud/auto-update-electron/issues"
+    },
+    "main": "public/electron/main.js",
+    "homepage": "./",
+    "build": {
+        "productName": "ToolBox",
+        "appId": "com.experiment.toolbox",
+        "files": [
+            "build/**/*",
+            "node_modules/**/*"
+        ],
+        "target": "NSIS",
+        "nsis": {
+            "allowToChangeInstallationDirectory": true,
+            "installerIcon": "public/logo.ico",
+            "installerHeaderIcon": "public/logo.ico",
+            "deleteAppDataOnUninstall": true,
+            "oneClick": "false"
+        }
+    },
+    "scripts": {
+        "start": "SET BROWSER=none  && react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "app": "set url=http://localhost:3000 && electron .",
+        "electron-pack": "electron-builder -c.extraMetadata.main=build/electron/main.js -w --publish always",
+        "preelectron-pack": "npm run build"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "electron": "^11.1.0"
+    }
+}
