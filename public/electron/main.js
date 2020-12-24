@@ -56,7 +56,7 @@ ipcMain.on("checkForUpdate", (evt, arg) => {
     autoUpdater.checkForUpdates();
 });
 // setInterval(() => {
-
+//     autoUpdater.checkForUpdates();
 // }, 5000);
 
 // download(mainWindow, urlToNupkg, {
@@ -66,12 +66,15 @@ ipcMain.on("checkForUpdate", (evt, arg) => {
 // });
 
 autoUpdater.on("update-available", (info) => {
+    console.log(info);
     sendStatusToWindow("Update available.");
 });
 autoUpdater.on("update-not-available", (info) => {
+    console.log(info);
     sendStatusToWindow("Update not available.");
 });
 autoUpdater.on("error", (err) => {
+    console.log(info);
     sendStatusToWindow(`Error in auto-updater: ${err.toString()}`);
 });
 autoUpdater.on("download-progress", (progressObj) => {
@@ -80,10 +83,12 @@ autoUpdater.on("download-progress", (progressObj) => {
     );
 });
 autoUpdater.on("update-downloaded", (info) => {
+    console.log(info);
     sendStatusToWindow("Update downloaded; will install now");
 });
 
 autoUpdater.on("update-downloaded", (info) => {
+    console.log(info);
     // Wait 5 seconds, then quit and install
     // In your application, you don't need to wait 500 ms.
     // You could call autoUpdater.quitAndInstall(); immediately
